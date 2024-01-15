@@ -1,7 +1,11 @@
 import React from 'react';
 
 const EditPost = () => {
-    
+    const handleSubmit =(event) =>{
+        event.preventDefault();
+        const form = event.target;
+        const title = form.title.value;
+    }
     return (
         <div>
             <h1 className="max-w-md mx-auto mt-10 mb-20 font-semibold">Edit posts</h1>

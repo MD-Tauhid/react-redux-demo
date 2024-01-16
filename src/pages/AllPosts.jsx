@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost, getAllPosts } from '../redux/actions/postActions';
 import { Link } from 'react-router-dom';
 
 const AllPosts = () => {
-    const { posts } = useSelector((state) => state)
-    const [showModal, setShowModal] = useState(false);
+    const { posts } = useSelector((state) => state);
     const dispatch = useDispatch();
     const handleDelete = (id) => {
         dispatch(deletePost(id))
     }
     useEffect(() => {
-        dispatch(getAllPosts())
+        if(posts.length === 0) {
+            dispatch(getAllPosts())
+        }
     }, []);
 
     return (

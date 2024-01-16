@@ -33,17 +33,15 @@ const postsReducer = (state = initialState, action) => {
             }
         case EDIT_POST:
             return {
-                isLoading: false,
-                posts: [action.payload, ...state.posts],
-                isError: null,
+                ...state,
+                posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
             }
         case DELETE_POST:
             return {
-                isLoading: false,
+                ...state,
                 posts: state.posts.filter(post => post.id !== action.payload),
-                isError: null,
             }
-    
+
         default:
             return state;
     }

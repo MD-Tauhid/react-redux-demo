@@ -3,7 +3,7 @@ import './loader.css';
 
 const Loader = () => {
     return (
-        <div className='w-full backdrop-blur-lg absolute top-0 h-[100vh] flex items-center'>
+        <div className='w-full backdrop-blur-lg sticky top-0 h-[100vh] flex items-center overflow-hidden'>
             <div className="loader">
                 <div className="face">
                     <div className="circle"></div>

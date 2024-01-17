@@ -1,4 +1,4 @@
-import { ADD_POST, DELETE_POST, EDIT_POST, GET_POST_FAILED, GET_POST_REQUEST, GET_POST_SUCCESS } from "../constants/postConstants";
+import { ADD_POST, DELETE_POST, EDIT_POST, GET_POST, LOADING_TRUE, REQUEST_FAILED } from "../constants/postConstants";
 
 const initialState = {
     isLoading: false,
@@ -8,22 +8,22 @@ const initialState = {
 
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_POST_REQUEST:
+        case LOADING_TRUE:
             return {
                 ...state,
                 isLoading: true,
             }
-        case GET_POST_SUCCESS:
-            return {
-                isLoading: false,
-                posts: action.payload,
-                isError: null,
-            }
-        case GET_POST_FAILED:
+        case REQUEST_FAILED:
             return {
                 isLoading: false,
                 posts: [],
                 isError: action.payload,
+            }
+        case GET_POST:
+            return {
+                isLoading: false,
+                posts: action.payload,
+                isError: null,
             }
         case ADD_POST:
             return {
@@ -34,11 +34,13 @@ const postsReducer = (state = initialState, action) => {
         case EDIT_POST:
             return {
                 ...state,
+                isLoading: false,
                 posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
             }
         case DELETE_POST:
             return {
                 ...state,
+                isLoading: false,
                 posts: state.posts.filter(post => post.id !== action.payload),
             }
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost } from '../redux/actions/postActions';
+import Loader from '../components/reusable/Loader';
 
 const AddPosts = () => {
     const dispatch = useDispatch();
-    const {posts} = useSelector((state)=> state)
+    const { isLoading } = useSelector((state) => state)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +23,7 @@ const AddPosts = () => {
 
     return (
         <div>
+            {isLoading && <Loader/>}
             <h1 className="max-w-md mx-auto mt-10 mb-20 font-semibold">Add posts</h1>
 
             <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -40,7 +42,7 @@ const AddPosts = () => {
                     <label for="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Post Description</label>
                 </div>
 
-                
+
                 <button type="submit" className="text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
             </form>
 

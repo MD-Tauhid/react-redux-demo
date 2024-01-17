@@ -1,9 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { editPost } from '../redux/actions/postActions';
+import Loader from '../components/reusable/Loader';
 
 const EditPost = () => {
+    const { isLoading } = useSelector(state => state);
     const loaderData = useLoaderData();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -14,9 +16,9 @@ const EditPost = () => {
         const body = form.body.value;;
         const userId = form.userId.value;
         const data = {
-            userId:userId,
-            title:title,
-            body:body,
+            userId: userId,
+            title: title,
+            body: body,
         }
         dispatch(editPost(loaderData?.id, data));
         navigate('/all-posts')
@@ -24,6 +26,7 @@ const EditPost = () => {
 
     return (
         <div>
+            {isLoading && <Loader/>}
             <h1 className="max-w-md mx-auto mt-10 mb-20 font-semibold">Edit posts</h1>
 
             <form onSubmit={handleSubmit} className="max-w-md mx-auto">

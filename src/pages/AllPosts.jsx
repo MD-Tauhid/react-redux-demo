@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost, getAllPosts } from '../redux/actions/postActions';
 import { Link } from 'react-router-dom';
+import Loader from '../components/reusable/Loader';
 
 const AllPosts = () => {
-    const { posts } = useSelector((state) => state);
+    const { posts, isLoading } = useSelector((state) => state);
     const dispatch = useDispatch();
     const handleDelete = (id) => {
         dispatch(deletePost(id))
@@ -17,6 +18,8 @@ const AllPosts = () => {
 
     return (
         <div>
+            {isLoading && <Loader/>}
+
             <div className="max-w-screen-xl mx-auto px-4 md:px-8 my-12">
 
                 <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">

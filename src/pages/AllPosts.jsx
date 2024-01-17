@@ -18,8 +18,6 @@ const AllPosts = () => {
 
     return (
         <div>
-            {isLoading && <Loader/>}
-
             <div className="max-w-screen-xl mx-auto px-4 md:px-8 my-12">
 
                 <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">

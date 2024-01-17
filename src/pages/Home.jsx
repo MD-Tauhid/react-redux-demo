@@ -14,8 +14,6 @@ const Home = () => {
 
     return (
         <div>
-            { isLoading && <Loader/> }
-            
             <div className='mx-auto my-12 w-[95%] grid grid-cols-3 gap-6'>
                 {
                     posts?.map((post,i) =><PostCard title={post?.title} desc={post?.body} />)

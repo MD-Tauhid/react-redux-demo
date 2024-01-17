@@ -26,7 +26,6 @@ const EditPost = () => {
 
     return (
         <div>
-            {isLoading && <Loader/>}
             <h1 className="max-w-md mx-auto mt-10 mb-20 font-semibold">Edit posts</h1>
 
             <form onSubmit={handleSubmit} className="max-w-md mx-auto">

@@ -71,3 +71,68 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+/* Pagination.css */
+.react-paginate {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+}
+
+.react-paginate > li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.react-paginate > li > a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #ead361;
+  color: #333;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.react-paginate > li > a:hover {
+  background-color: #f0f0f0;
+}
+
+.react-paginate > li.selected > a {
+  background-color: #f3e067;
+  color: #fff;
+}
+
+.react-paginate > li.disabled > a {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.react-paginate > li.break {
+  background-color: transparent;
+  cursor: default;
+}
+
+.react-paginate > li.previous,
+.react-paginate > li.next {
+  font-weight: bold;
+}
+
+/* Customize previous and next buttons */
+.react-paginate > li.previous > a,
+.react-paginate > li.next > a {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8dc6c;
+  color: #333;
+}
+
+.react-paginate > li.previous > a:hover,
+.react-paginate > li.next > a:hover {
+  background-color: #e0e0e0;
+}
+

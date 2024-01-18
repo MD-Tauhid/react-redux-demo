@@ -6,6 +6,7 @@ import AllPosts from "../pages/AllPosts";
 import AddPosts from "../pages/AddPosts";
 import EditPost from "../pages/EditPost";
 import { baseURL } from "../config/baseURL";
+import Cart from "../pages/Cart";
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                 path: "/edit-post/:id",
                 element: <EditPost/>,
                 loader: ({params}) => fetch(`${baseURL}/posts/${params.id}`)
+            },
+            {
+                path: "/cart",
+                element: <Cart/>
             }
         ]
     },

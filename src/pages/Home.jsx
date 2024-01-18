@@ -6,21 +6,19 @@ import Loader from '../components/reusable/Loader';
 import ReactPaginate from 'react-paginate';
 
 const Home = () => {
-    const { isLoading, posts, isError } = useSelector(state => state);
+    const { isLoading, posts, isError, cartItems } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const itemsPerPage = 6;
     const [currentPageStart, setCurrentPageStart] = useState(0);
     const currentPageEnd = currentPageStart + itemsPerPage;
-    console.log(`Loading items from ${currentPageStart} to ${currentPageEnd}`);
+    // console.log(`Loading items from ${currentPageStart} to ${currentPageEnd}`);
     const currentItems = posts.slice(currentPageStart, currentPageEnd);
     const pageCount = Math.ceil(posts.length / itemsPerPage);
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % posts.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
+        // console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setCurrentPageStart(newOffset);
     };
 
@@ -32,7 +30,7 @@ const Home = () => {
         <div>
             <div className='mx-auto my-12 w-[95%] grid grid-cols-3 gap-6'>
                 {
-                    currentItems?.map((post, i) => <PostCard title={post?.title} desc={post?.body} />)
+                    currentItems?.map((post, i) => <PostCard id={post?.id} title={post?.title} desc={post?.body} />)
                 }
             </div>
             <ReactPaginate

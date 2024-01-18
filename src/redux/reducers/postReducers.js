@@ -1,9 +1,10 @@
-import { ADD_POST, DELETE_POST, EDIT_POST, GET_POST, LOADING_TRUE, REQUEST_FAILED } from "../constants/postConstants";
+import { ADD_POST, ADD_TO_CART, DELETE_POST, EDIT_POST, GET_POST, LOADING_TRUE, REQUEST_FAILED } from "../constants/postConstants";
 
 const initialState = {
     isLoading: false,
     posts: [],
     isError: null,
+    cartItems: [],
 }
 
 const postsReducer = (state = initialState, action) => {
@@ -21,6 +22,7 @@ const postsReducer = (state = initialState, action) => {
             }
         case GET_POST:
             return {
+                ...state,
                 isLoading: false,
                 posts: action.payload,
                 isError: null,
@@ -42,6 +44,12 @@ const postsReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 posts: state.posts.filter(post => post.id !== action.payload),
+            }
+        case ADD_TO_CART:
+            return {
+                ...state,
+                isLoading: false,
+                cartItems: [...state.cartItems, state.posts.find(post => post.id === action.payload)],
             }
 
         default:

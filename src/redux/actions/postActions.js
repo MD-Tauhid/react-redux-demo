@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_POST, DELETE_POST, EDIT_POST, GET_POST, LOADING_TRUE, REQUEST_FAILED } from "../constants/postConstants"
+import { ADD_POST, ADD_TO_CART, DELETE_POST, EDIT_POST, GET_POST, LOADING_TRUE, REQUEST_FAILED } from "../constants/postConstants"
 import { baseURL } from "../../config/baseURL";
 
 
@@ -47,4 +47,9 @@ export const deletePost = (id) => async (dispatch) => {
     catch (error) {
         dispatch({ type: REQUEST_FAILED, payload: error.message });
     }
-} 
+}
+
+export const addToCart = (id) =>async (dispatch) =>{
+    dispatch({type: LOADING_TRUE});
+    dispatch({ type: ADD_TO_CART, payload: id });
+}

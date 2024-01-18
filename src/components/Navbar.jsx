@@ -24,6 +24,9 @@ const Navbar = () => {
                                     <li>
                                         <Link className="text-gray-500 transition hover:text-gray-500/75" to="/all-posts"> All Posts </Link>
                                     </li>
+                                    <li>
+                                        <Link className="text-gray-500 transition hover:text-gray-500/75" to="/cart">See Cart🛒</Link>
+                                    </li>
 
                                 </ul>
                             </nav>
